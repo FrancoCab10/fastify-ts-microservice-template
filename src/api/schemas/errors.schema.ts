@@ -19,7 +19,7 @@ export const errorResponse = {
 
 export const validationErrorResponse = {
   ...errorResponse,
-  description: 'Error thrown by Connexion when validating request body',
+  description: 'Error thrown when validating request body',
   properties: {
     ...errorResponse.properties,
     type: {

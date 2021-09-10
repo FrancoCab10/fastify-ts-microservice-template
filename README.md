@@ -15,3 +15,8 @@ A template project for creating microservices with fastify and typescript.
 - `npm run test`   Unit testing with jest
 - `npm run lint`   Lint files with eslint
 - `npm run lint:fix`   Lint & Fix files with eslint
+
+## Documentation
+After you run the server eighter in dev or production mode, you can go to the following URLs to find the documentation:
+- Swagger UI format: `http://localhost:5000/docs/index.html`
+- ReDoc format: `http://localhost:5000/docs/docs.html`
