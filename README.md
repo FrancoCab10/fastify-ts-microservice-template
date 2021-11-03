@@ -10,13 +10,14 @@ A template project for creating microservices with fastify and typescript.
 ## Commands:
 - `npm install`   Installs application dependencies
 - `npm run build`   Builds the application
-- `npm run start`   Starts the application from last build
-- `npm run start:dev`   Starts the application from typescript files with live reload
+- `npm run start`   Starts the application in production mode
+- `npm run start:dev`   Starts the application in development mode
+- `npm run start:live`   Starts the application in development mode with live reload
 - `npm run test`   Unit testing with jest
 - `npm run lint`   Lint files with eslint
 - `npm run lint:fix`   Lint & Fix files with eslint
+- `npm run swagger`   Generates swagger compilant api docs
 
 ## Documentation
-After you run the server eighter in dev or production mode, you can go to the following URLs to find the documentation:
-- Swagger UI format: `http://localhost:5000/docs/index.html`
-- ReDoc format: `http://localhost:5000/docs/docs.html`
+After the server has started, you can go to the following URL to find the documentation:
+- Swagger UI format: `http://localhost:5000/docs/static/index.html`

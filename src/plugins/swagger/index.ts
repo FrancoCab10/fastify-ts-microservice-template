@@ -1,15 +1,16 @@
 import fp from 'fastify-plugin'
-import fastifyOas from 'fastify-oas'
+import fastifySwagger, { SwaggerOptions } from 'fastify-swagger'
 import { FastifyInstance, FastifyPluginOptions } from 'fastify'
 
 export default fp(
   (
     fastify: FastifyInstance,
-    opts: FastifyPluginOptions,
+    opts: SwaggerOptions,
     next: (err?: Error) => void
   ) => {
-    const swaggerConfig = {
+    const swaggerConfig: FastifyPluginOptions = {
       exposeRoute: true,
+      staticCSP: true,
       routePrefix: '/docs',
       swagger: {
         info: {
@@ -20,12 +21,6 @@ export default fp(
         schemes: ['https'],
         consumes: ['application/json'],
         produces: ['application/json'],
-        servers: [
-          {
-            url: 'http://localhost:5000',
-            description: 'Local server'
-          }
-        ],
         securityDefinitions: {
           apiKey: {
             type: 'apiKey',
@@ -33,10 +28,14 @@ export default fp(
             in: 'header'
           }
         },
+        uiConfig: {
+          docExpansion: 'full',
+          deepLinking: false
+        },
         ...opts
       }
     }
-    fastify.register(fastifyOas, swaggerConfig)
+    fastify.register(fastifySwagger, swaggerConfig)
     next()
   }
 )

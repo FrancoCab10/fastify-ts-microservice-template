@@ -3,7 +3,7 @@ import { FastifyInstance } from 'fastify'
 export default async (fastify: FastifyInstance): Promise<void> => {
   const healthSchema = {
     title: 'Health',
-    summary: '/health',
+    summary: '/v1/health',
     description: 'Healthcheck route',
     response: {
       200: {
@@ -22,6 +22,8 @@ export default async (fastify: FastifyInstance): Promise<void> => {
     method: 'GET',
     url: '/health',
     schema: healthSchema,
-    handler: async (_request, reply) => reply.code(200).send({ message: 'ok' })
+    handler: async (request, reply) => {
+      reply.code(200).send({ message: 'ok' })
+    }
   })
 }

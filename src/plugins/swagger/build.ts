@@ -9,7 +9,7 @@ const start = async () => {
   try {
     await fastify.ready()
     !fs.existsSync(dir) && fs.mkdirSync(dir)
-    fs.writeFileSync(`${dir}/swagger.yml`, (<any>fastify).oas({ yaml: true }))
+    fs.writeFileSync(`${dir}/swagger.yml`, (<any>fastify).swagger({ yaml: true }))
     fastify.log.info(`Documentation saved to ${dir}/swagger.yml`)
     process.exit()
   } catch (err) {
