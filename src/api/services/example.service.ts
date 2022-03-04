@@ -33,20 +33,20 @@ class ExampleService {
   async update(id: number, example: Omit<Example, 'id'>): Promise<Example> {
     const index = exampleData.findIndex(example => example.id === id)
     const newExample = { ...example, id }
-    exampleData[index] = newExample
+    exampleData.splice(index, 1, newExample)
     return newExample
   }
 
   async partialUpdate(id: number, example: Omit<Example, 'id'>): Promise<Example> {
-    let prevExample = exampleData.find(example => example.id === id)
-    prevExample = { ...prevExample, ...example, id }
-    return prevExample
+    const index = exampleData.findIndex(example => example.id === id)
+    const newExample = { ...exampleData[index], ...example, id }
+    exampleData.splice(index, 1, newExample)
+    return newExample
   }
 
   async delete(id: number): Promise<Example> {
     const index = exampleData.findIndex(example => example.id === id)
-    const example = exampleData[index]
-    exampleData.splice(index, 1)
+    const [example] = exampleData.splice(index, 1)
     return example
   }
 

@@ -14,7 +14,7 @@ const createServer = (): FastifyInstance => {
   server.register(helmet)
   server.register(swagger)
   server.register(health, { prefix: '/v1' })
-  server.register(router, { prefix: '/v1/example' })
+  server.register(router, { prefix: '/v1/examples' })
 
   return server
 }
