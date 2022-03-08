@@ -11,7 +11,7 @@
     "test": "jest",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "swagger": "ts-node src/plugins/swagger/build.ts"
+    "swagger": "ts-node src/core/swagger/build.ts"
   },
   "keywords": [
     "fastify",
@@ -24,12 +24,13 @@
   "dependencies": {
     "@sinclair/typebox": "^0.23.4",
     "fastify": "^3.20.2",
+    "fastify-autoload": "^3.11.0",
     "fastify-env": "^2.1.1",
     "fastify-helmet": "^5.3.2",
     "fastify-plugin": "^3.0.0",
     "fastify-swagger": "^4.12.5",
-    "isomorphic-fetch": "^3.0.0",
-    "module-alias": "^2.2.2"
+    "module-alias": "^2.2.2",
+    "node-fetch": "^3.2.2"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",

@@ -1,20 +1,25 @@
-import './config/aliases'
-import logger from './config/logger'
+import './core/config/aliases'
+import { join } from 'path'
+import logger from '@core/config/logger'
+import AutoLoad from 'fastify-autoload'
 import { fastify, FastifyInstance } from 'fastify'
-import config from '@plugins/config'
-import helmet from '@plugins/helmet'
-import swagger from '@plugins/swagger'
-import health from '@plugins/health'
-import router from '@api/router'
 
 const createServer = (): FastifyInstance => {
   const server = fastify({ logger })
 
-  server.register(config)
-  server.register(helmet)
-  server.register(swagger)
-  server.register(health, { prefix: '/v1' })
-  server.register(router, { prefix: '/v1/examples' })
+  void server.register(AutoLoad, {
+    dir: join(__dirname, 'core'),
+    ignorePattern: /(aliases|logger).ts/,
+    dirNameRoutePrefix: false
+  })
+
+  void server.register(AutoLoad, {
+    dir: join(__dirname, 'plugins')
+  })
+
+  void server.register(AutoLoad, {
+    dir: join(__dirname, 'api/routes')
+  })
 
   return server
 }

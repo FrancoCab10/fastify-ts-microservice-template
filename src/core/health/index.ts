@@ -20,7 +20,7 @@ export default async (fastify: FastifyInstance): Promise<void> => {
 
   fastify.route({
     method: 'GET',
-    url: '/health',
+    url: '/v1/health',
     schema: healthSchema,
     handler: async (request, reply) => {
       reply.code(200).send({ message: 'ok' })
