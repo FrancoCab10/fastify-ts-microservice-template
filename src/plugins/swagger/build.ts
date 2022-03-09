@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import fs from 'fs'
-import Fastify from '../../server'
-
-const fastify = Fastify()
+import CreateServer from '../../server'
 
 const dir = './docs'
 const start = async () => {
+  const fastify = CreateServer()
+
   try {
     await fastify.ready()
     !fs.existsSync(dir) && fs.mkdirSync(dir)

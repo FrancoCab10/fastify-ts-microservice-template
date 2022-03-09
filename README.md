@@ -6,6 +6,7 @@ A template project for creating microservices with fastify and typescript.
 - Fastify
 - Typescript
 - Jest
+- Docker
 
 ## Commands:
 - `npm install`   Installs application dependencies
@@ -17,6 +18,9 @@ A template project for creating microservices with fastify and typescript.
 - `npm run lint`   Lint files with eslint
 - `npm run lint:fix`   Lint & Fix files with eslint
 - `npm run swagger`   Generates swagger compilant api docs
+
+## Docker
+Building an image with the provided Dockerfile will automatically compile the project and use the javascript build in the image.
 
 ## Documentation
 After the server has started, you can go to the following URL to find the documentation:

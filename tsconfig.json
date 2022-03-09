@@ -76,8 +76,7 @@
     "baseUrl": "./",
     "paths": {
       "@api/*": ["src/api/*"],
-      "@plugins/*": ["src/plugins/*"],
-      "@core/*": ["src/core/*"]
+      "@plugins/*": ["src/plugins/*"]
     }
   },
   "exclude": [

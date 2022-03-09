@@ -1,17 +1,20 @@
-import './core/config/aliases'
+import 'module-alias/register'
 import { join } from 'path'
-import logger from '@core/config/logger'
 import AutoLoad from 'fastify-autoload'
-import { fastify, FastifyInstance } from 'fastify'
+import { fastify, FastifyInstance, FastifyLoggerOptions } from 'fastify'
 
 const createServer = (): FastifyInstance => {
-  const server = fastify({ logger })
+  const env = process.env.NODE_ENV || 'development'
+  const logger: FastifyLoggerOptions = { level: 'info', prettyPrint: false }
 
-  void server.register(AutoLoad, {
-    dir: join(__dirname, 'core'),
-    ignorePattern: /(aliases|logger).ts/,
-    dirNameRoutePrefix: false
-  })
+  if (env === 'development') {
+    logger.prettyPrint = {
+      colorize: true,
+      translateTime: 'SYS:yyyy-mm-dd HH:MM:ss',
+      ignore: 'pid,hostname',
+    }
+  }
+  const server = fastify({ logger })
 
   void server.register(AutoLoad, {
     dir: join(__dirname, 'plugins')

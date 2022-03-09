@@ -9,6 +9,10 @@ let packages = {
     start: 'NODE_ENV=production node server.js',
     swagger: 'NODE_ENV=production node plugins/swagger/build.js'
   },
+  _moduleAliases: {
+    '@api': './api',
+    '@plugins': './plugins'
+  },
   devDependencies: {}
 }
 
